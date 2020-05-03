@@ -14,6 +14,8 @@ Displays a list of images in the media library without alt text, and an admin me
 
 Displays a list of images in the media library without alt text, and an admin message reminding you to add it.
 
+[View the code on Github](https://github.com/thewatermethod/wcw-alt-tag-audit)
+
 == Installation ==
 
 1. Upload `wcw-alt-tag-audit.php` to the `/wp-content/plugins/` directory
