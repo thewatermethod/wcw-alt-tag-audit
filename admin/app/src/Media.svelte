@@ -17,6 +17,10 @@
    *
    * */
   const editAltText = e => {
+    if (alt == "") {
+      return;
+    }
+
     const data = {
       action: "wcw_update_alt_text",
       nonce: wcw_alt_tags.updateAltTextNonce,
