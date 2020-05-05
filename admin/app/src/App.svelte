@@ -22,7 +22,7 @@
     };
 
     jQuery.post(wcw_alt_tags.ajaxUrl, data, response => {
-      console.log("message received master");
+      console.log("message received bud");
     });
   };
 
@@ -113,17 +113,6 @@
   onMount(() => {
     fetchMedia();
     document.cookie = "wcw_alt_visited=visited;max-age=31536000";
-  });
-
-  afterUpdate(() => {
-    //console.log(document.cookie.indexOf("wcw_alt_clean"));
-    //if(document.cookie.indexOf("wcw_alt_clean") ){
-    //}
-    // if (pictures.length < 1) {
-    //   document.cookie = "wcw_alt_clean=clean";
-    // } else {
-    //   document.cookie = "wcw_alt_clean=dirty";
-    // }
   });
 </script>
 

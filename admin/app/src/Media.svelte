@@ -1,4 +1,6 @@
 <script>
+  import DOMPurify from "dompurify";
+
   // props with some sensible defaults
   export let picture = {};
   export let index = 0;
@@ -7,7 +9,6 @@
   // component scoped vars
   let alt = "";
   let isOdd = index % 2 === 1;
-  console.log(isOdd);
 
   /**
    *
@@ -19,7 +20,7 @@
     const data = {
       action: "wcw_update_alt_text",
       nonce: wcw_alt_tags.updateAltTextNonce,
-      altText: alt,
+      altText: DOMPurify.sanitize(alt),
       media: picture.id
     };
 

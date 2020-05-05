@@ -62,7 +62,7 @@ class Wcw_Alt_Tag_Audit_Admin {
     
         $visited_cookie = null;
         if( isset($_COOKIE['wcw_alt_visited']) ){
-            $visited_cookie = $_COOKIE['wcw_alt_visited'];
+            $visited_cookie = santiize_text_field($_COOKIE['wcw_alt_visited']);
         }
             
         $alt_text_needs_review = get_transient( '_alt_text_needs_review');
@@ -172,12 +172,13 @@ class Wcw_Alt_Tag_Audit_Admin {
 
 
         /** Let's verify that nonce */
-        if( !isset($_POST['nonce']) || !wp_verify_nonce( $_POST['nonce'], 'wcw_update_alt_text' ) ) {   
+        if( !isset($_POST['nonce']) || !wp_verify_nonce( sanitize_text_field($_POST['nonce']), 'wcw_update_alt_text' ) ) {   
             wp_die();
-        }
-            
-        $post_id = $_POST['media'];
-        $alt_text = $_POST['altText'];
+        }          
+           
+
+        $post_id = intval(santize_text_field($_POST['media']));
+        $alt_text = santize_text_field($_POST['altText']);
 
         return update_post_meta( $post_id, '_wp_attachment_image_alt', $alt_text );        
 
@@ -187,14 +188,15 @@ class Wcw_Alt_Tag_Audit_Admin {
     public function update_site_message() {
     
         /** Let's verify that nonce */
-        if( !isset($_POST['nonce']) || !wp_verify_nonce( $_POST['nonce'], 'wcw_update_site_message' ) ) {   
-            
+        if( !isset($_POST['nonce']) || !wp_verify_nonce( sanitize_text_field($_POST['nonce']), 'wcw_update_site_message' ) ) {               
            wp_die();
         }
 
-      
+        if(!isset( $_POST['status'])) {
+            wp_die();
+        }
 
-        set_transient( '_alt_text_needs_review', $_POST['status'] );        
+        set_transient( '_alt_text_needs_review', sanitize_text_field($_POST['status']));        
         wp_die();
 
     }
