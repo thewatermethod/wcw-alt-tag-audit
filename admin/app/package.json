@@ -16,7 +16,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "dompurify": "^2.0.10",
+    "dompurify": "^2.0.17",
     "sirv-cli": "^0.4.4"
   }
 }
